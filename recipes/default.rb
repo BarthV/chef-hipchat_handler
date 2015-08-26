@@ -31,5 +31,3 @@ chef_handler 'Chef::Handler::Hipchat' do
   source '/var/chef/handlers/hipchat_handler.rb'
   arguments [ node['chef_client']['handler']['hipchat'] ]
 end
-
-directory '/tmp/lol/test'
