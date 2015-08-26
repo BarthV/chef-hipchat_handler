@@ -23,12 +23,12 @@ Usage
 
 Attributes
 ==========
-* `node['chef_client']['handler']['hipchat']['auth_token']` - The API key of your Slack incoming webhook 
-* `node['chef_client']['handler']['hipchat']['room']` - Your Hipchat room (optional)
+* `node['chef_client']['handler']['hipchat']['auth_token']` - The Auth token of you Hipchat integration
+* `node['chef_client']['handler']['hipchat']['room']` - Your Hipchat room
 
 Optional attributes
 
-* `node['chef_client']['handler']['hipchat']['icon_url']` - The message icon url (default: nil)
+* `node['chef_client']['handler']['hipchat']['icon_url']` - The message emoji icon url (default: nil)
 * `node['chef_client']['handler']['hipchat']['detail_level']` - The level of detail in the message. Valid options are `basic`, `elapsed` (default: 'basic')
 * `node['chef_client']['handler']['hipchat']['fail_only']` - Only report when runs fail as opposed to every single occurance (default: true)
 * `node['chef_client']['handler']['hipchat']['timeout']` - Hipchat connector timeout in seconds (default: 10)

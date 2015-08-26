@@ -16,7 +16,7 @@ class Chef::Handler::Hipchat < Chef::Handler
     @config  = config.dup
     @room = @config.delete(:room)
     @auth_token = @config.delete(:auth_token)
-    @timeout = @config.delete(:timeout) || 20
+    @timeout = @config.delete(:timeout) || 10
     @fail_only = @config.delete(:fail_only) || true
     @detail_level = @config.delete(:detail_level) || 'basic'
   end
