@@ -17,9 +17,9 @@ Requirements
 Usage
 =====
 
-1. Create a new auth token in hipchat (https://slack.com/services/new/incoming-webhook)
-2. Set the `room` and `api_key` attributes above on the node/environment/etc.
-3. Include this `hipchat_handler` recipe.
+1. Create a new auth token in Hipchat
+2. Set the `room` and `auth_token` attributes above on the node/environment/etc.
+3. Include this `hipchat_handler` recipe or put it on your run_list.
 
 Attributes
 ==========
