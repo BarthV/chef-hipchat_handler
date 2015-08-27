@@ -1,3 +1,5 @@
+[![CK Version](http://img.shields.io/cookbook/v/hipchat_handler.svg)](https://supermarket.getchef.com/cookbooks/hipchat_handler) [![Build Status](https://img.shields.io/travis/BarthV/chef-hipchat_handler.svg)](https://travis-ci.org/BarthV/chef-hipchat_handler)
+
 Description
 ===========
 
