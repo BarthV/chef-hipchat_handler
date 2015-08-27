@@ -19,6 +19,7 @@ class Chef::Handler::Hipchat < Chef::Handler
     @timeout = @config.delete(:timeout) || 10
     @fail_only = @config.delete(:fail_only) || true
     @detail_level = @config.delete(:detail_level) || 'basic'
+    @emoji_url = @config.delete(:emoji_url) || nil
   end
 
   def report
@@ -52,13 +53,21 @@ class Chef::Handler::Hipchat < Chef::Handler
   end
 
   def failure_msg
-    %Q{<img src=https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/100700/pepesad-1440619372.jpg>
-<strong> Chef client run #{run_status_human_readable} on #{run_status.node.name} #{run_status_detail(@detail_level)}</strong><br/>
+    %Q{#{hipchat_emoji}
+<strong>Chef client run #{run_status_human_readable} on #{run_status.node.name} #{run_status_detail(@detail_level)}</strong><br/>
 <pre>#{run_status.exception}</pre>}
   end
 
   def success_msg
     %Q{<strong>Chef client run #{run_status_human_readable} on #{run_status.node.name} #{run_status_detail(@detail_level)}</strong>}
+  end
+
+  def hipchat_emoji
+    unless @emoji_url.nil?
+      %Q{#{'<img src=' + @emoji_url + '> '}}
+    else
+      ''
+    end
   end
 
   def hipchat_message(content)
