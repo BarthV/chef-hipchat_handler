@@ -33,5 +33,3 @@ chef_handler 'Chef::Handler::Hipchat' do
     node['chef_client']['handler']['hipchat']
   ]
 end
-
-directory '/tmp/test/lol'
