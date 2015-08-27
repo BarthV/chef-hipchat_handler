@@ -19,7 +19,7 @@ class Chef
         @room = @config.delete(:room)
         @auth_token = @config.delete(:auth_token)
         @timeout = @config.delete(:timeout) || 10
-        @report_success = @config.delete(:report_success)  || false
+        @report_success = @config.delete(:report_success) || false
         @detail_level = @config.delete(:detail_level) || 'basic'
         @emoji_url = @config.delete(:emoji_url) || nil
       end
