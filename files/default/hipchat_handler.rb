@@ -19,7 +19,7 @@ class Chef
         @room = @config.delete(:room)
         @auth_token = @config.delete(:auth_token)
         @timeout = @config.delete(:timeout) || 10
-        @fail_only = @config.delete(:fail_only) || true
+        @report_success = @config.delete(:report_success)  || false
         @detail_level = @config.delete(:detail_level) || 'basic'
         @emoji_url = @config.delete(:emoji_url) || nil
       end
@@ -27,10 +27,10 @@ class Chef
       def report
         Timeout.timeout(@timeout) do
           Chef::Log.debug('Sending report to Hipchat')
-          if fail_only
-            hipchat_message(failure_msg) unless run_status.success?
+          if run_status.success?
+            hipchat_message(success_msg) if @report_success
           else
-            hipchat_message(succes_msg)
+            hipchat_message(failure_msg)
           end
         end
       rescue StandardError => e
