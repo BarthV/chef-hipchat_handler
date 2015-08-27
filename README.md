@@ -12,7 +12,7 @@ Requirements
 
 * The `chef_handler` cookbook
 * An existing Hipchat auth token
-* In option, a room name
+* A working room name
 
 Usage
 =====
