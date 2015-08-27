@@ -1,4 +1,5 @@
 # Attributes for Hipchat intergration
+# (default attributes are set inside handler)
 ## required attributes
 default['chef_client']['handler']['hipchat']['auth_token'] = nil
 default['chef_client']['handler']['hipchat']['room'] = nil

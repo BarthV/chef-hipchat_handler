@@ -79,7 +79,7 @@ class Chef::Handler::Hipchat < Chef::Handler
     File.write('/tmp/debug1', failure_msg)
 
     hipchat[@room].send(
-      'Chef',
+      'chef-client',
        content,
        :notify => true,
        :message_format => 'html'
