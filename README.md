@@ -7,6 +7,8 @@ This cookbook is heavily based on [rackspace-cookbooks/chef-slack_handler](https
 
 My company (sadly) decided to abandon Slack in favor of Hipchat, and I wanted to keep the same features with it.
 
+Have fun with it and feel free to contribute !
+
 Requirements
 ============
 
