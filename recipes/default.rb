@@ -19,7 +19,9 @@
 
 include_recipe 'chef_handler'
 
-chef_gem 'hipchat'
+chef_gem 'hipchat' do
+  compile_time false if respond_to?(:compile_time)
+end
 
 handler_file = File.join(node['chef_handler']['handler_path'], 'hipchat_handler.rb')
 
