@@ -21,14 +21,16 @@ include_recipe 'chef_handler'
 
 chef_gem 'hipchat'
 
-cookbook_file File.join(node['chef_handler']['handler_path'], 'hipchat_handler.rb') do
+handler_file = File.join(node['chef_handler']['handler_path'], 'hipchat_handler.rb')
+
+cookbook_file handler_file do
   source 'hipchat_handler.rb'
   mode '0600'
   action :create
 end
 
 chef_handler 'Chef::Handler::Hipchat' do
-  source '/var/chef/handlers/hipchat_handler.rb'
+  source handler_file
   arguments [
     node['chef_client']['handler']['hipchat']
   ]
