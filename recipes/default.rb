@@ -34,4 +34,4 @@ chef_handler 'Chef::Handler::Hipchat' do
   arguments [
     node['chef_client']['handler']['hipchat']
   ]
-end
+end.run_action(:enable)
