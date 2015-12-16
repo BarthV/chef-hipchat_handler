@@ -27,7 +27,7 @@ cookbook_file handler_file do
   source 'hipchat_handler.rb'
   mode '0600'
   action :create
-end
+end.run_action(:create)
 
 chef_handler 'Chef::Handler::Hipchat' do
   source handler_file
