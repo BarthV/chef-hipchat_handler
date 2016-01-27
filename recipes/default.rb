@@ -28,7 +28,7 @@ cookbook_file File.join(node['chef_handler']['handler_path'], 'hipchat_handler.r
 end
 
 chef_handler 'Chef::Handler::Hipchat' do
-  source '/var/chef/handlers/hipchat_handler.rb'
+  source File.join(node['chef_handler']['handler_path'], 'hipchat_handler.rb')
   arguments [
     node['chef_client']['handler']['hipchat']
   ]
