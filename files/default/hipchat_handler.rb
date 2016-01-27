@@ -47,8 +47,8 @@ class Chef
           return
         when 'elapsed'
           "(#{run_status.elapsed_time} seconds). #{updated_resources.count} resources updated" unless updated_resources.nil?
-        when "resources"
-          "(#{run_status.elapsed_time} seconds). #{updated_resources.count} resources updated\n#{updated_resources.join(", ").to_s}"  unless updated_resources.nil?
+        when 'resources'
+          "(#{run_status.elapsed_time} seconds). #{updated_resources.count} resources updated\n#{updated_resources.join(', ')}" unless updated_resources.nil?
         else
           return
         end
