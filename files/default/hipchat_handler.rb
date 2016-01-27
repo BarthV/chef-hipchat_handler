@@ -12,14 +12,16 @@ require 'timeout'
 class Chef
   class Handler
     class Hipchat < Chef::Handler
-      attr_reader :team, :api_key, :config, :timeout, :fail_only, :detail_level
+      attr_reader :server_url, :room, :auth_token, :config, :timeout, :report_success, :notify_users, :detail_level
 
       def initialize(config = {})
         @config = config.dup
+        @server_url = @config.delete(:server_url) || 'https://api.hipchat.com'
         @room = @config.delete(:room)
         @auth_token = @config.delete(:auth_token)
         @timeout = @config.delete(:timeout) || 10
         @report_success = @config.delete(:report_success) || false
+        @notify_users = @config.delete(:notify_users) || true
         @detail_level = @config.delete(:detail_level) || 'basic'
         @emoji_url = @config.delete(:emoji_url) || nil
       end
@@ -45,6 +47,8 @@ class Chef
           return
         when 'elapsed'
           "(#{run_status.elapsed_time} seconds). #{updated_resources.count} resources updated" unless updated_resources.nil?
+        when "resources"
+          "(#{run_status.elapsed_time} seconds). #{updated_resources.count} resources updated\n#{updated_resources.join(", ").to_s}"  unless updated_resources.nil?
         else
           return
         end
@@ -71,15 +75,14 @@ class Chef
       def hipchat_message(content)
         hipchat = HipChat::Client.new(
           @auth_token,
-          :api_version => 'v2'
+          :api_version => 'v2',
+          :server_url => @server_url
         )
-
-        File.write('/tmp/debug1', failure_msg)
 
         hipchat[@room].send(
           'chef-client',
           content,
-          :notify => true,
+          :notify => @notify_users,
           :message_format => 'html'
         )
       end
