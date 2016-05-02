@@ -68,7 +68,7 @@ class Chef
         if @emoji_url.nil?
           ''
         else
-          %(#{'<img src=' + @emoji_url + '> '})
+          "<img src=#{emoji_url}> "
         end
       end
 
